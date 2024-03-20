@@ -3,8 +3,6 @@ import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import {
   LoginLink,
-  LogoutLink,
-  RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import UserNav from "./user-nav";
@@ -14,7 +12,7 @@ const Navbar = async () => {
   const user = await getUser();
 
   return (
-    <nav className="border-b bg-background h-[10vh] flex items-center">
+    <nav className="border-b bg-background h-[10vh] flex items-center w-full">
       <div className="container flex items-center justify-between">
         <Link href={"/"}>
           <h1 className="font-bold text-3xl">
@@ -36,9 +34,6 @@ const Navbar = async () => {
               <LoginLink>
                 <Button>Sign in</Button>
               </LoginLink>
-              <RegisterLink>
-                <Button variant={"secondary"}>Sign up</Button>
-              </RegisterLink>
             </div>
           )}
         </div>

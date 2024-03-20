@@ -23,15 +23,6 @@ const getData = async (userID: string) => {
     },
   });
 
-  // const data = await prisma.note.findMany({
-  //   where: {
-  //     userID: userID,
-  //   },
-  //   orderBy: {
-  //     createdAt: "desc",
-  //   },
-  // });
-
   return data;
 };
 
@@ -57,7 +48,7 @@ const DashboardPage = async () => {
 
   return (
     <div className="grid items-start gap-y-8">
-      <div className="flex items-center justify-between px-2">
+      <div className="flex flex-col lg:flex-row gap-y-8 items-center justify-between px-2">
         <div className="grid gap-1">
           <h1 className="text-3xl md:text-4xl">Your Notes</h1>
           <p className="text-lg text-muted-foreground">
