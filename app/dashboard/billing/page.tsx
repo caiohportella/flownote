@@ -1,4 +1,7 @@
-import { StripePortalButton, StripeSubscriptionButton } from "@/components/submit-buttons";
+import {
+  StripePortalButton,
+  StripeSubscriptionButton,
+} from "@/components/submit-buttons";
 import {
   Card,
   CardContent,
@@ -75,7 +78,10 @@ const BillingPage = async () => {
 
     const subscriptionURL = await getStripeSession({
       customerID: dbUser?.stripeCustomerID as string,
-      domainURL: "http://localhost:3000",
+      domainURL:
+        process.env.NODE_ENV == "production"
+          ? (process.env.PRODUCTION_URL as string)
+          : "http://localhost:3000",
       priceID: process.env.STRIPE_PRICE_ID as string,
     });
 
@@ -87,7 +93,10 @@ const BillingPage = async () => {
 
     const session = await stripe.billingPortal.sessions.create({
       customer: data?.user.stripeCustomerID as string,
-      return_url: "http://localhost:3000/dashboard",
+      return_url:
+        process.env.NODE_ENV == "production"
+          ? (process.env.PRODUCTION_URL as string)
+          : "http://localhost:3000/dashboard",
     });
 
     return redirect(session.url);
