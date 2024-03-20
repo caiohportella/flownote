@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Flownote",
   description: "A SaaS app for note-taking and organization, made with NextJS.",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 const getData = async (userID: string) => {
